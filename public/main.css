@@ -126,7 +126,7 @@
 .delete{
     text-decoration: none;
     font-size: 1.4rem;
-    padding: 5px 10px;
+    padding:2px 4px;
     background-color: rgb(67, 136, 116);
     color: white;
 }
@@ -152,7 +152,7 @@
 .completeBtn{
     text-decoration: none;
     font-size: 1.4rem;
-    padding: 5px 10px;
+    padding: 2px 4px;
     background-color: rgb(24, 138, 106);
     color: white;
 }
