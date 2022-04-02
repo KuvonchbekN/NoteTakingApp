@@ -71,8 +71,12 @@
     font-size: 1.5rem;
     border: 1px dotted #ccc;
     margin: 10px;
-    width: 200px;
+    width: 30%;
     height: 200px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 .note-description-para{
@@ -108,7 +112,10 @@
 
 
 
-
-
-
-
+.delete{
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    background-color: tomato;
+    color: white;
+}

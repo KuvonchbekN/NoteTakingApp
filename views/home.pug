@@ -7,6 +7,9 @@ block number1
     if success
         p.success Note has been created successfully!
 
+    if deleted 
+        p.success Deleted successfully!
+
     form(action="/create" method="POST")
         div.container
             input.input-note(type="text" placeholder="Add Note title" name="noteTitle")
@@ -17,7 +20,9 @@ block number1
         if (notes.length)  
             each note in notes
                 div.card
-                    p.note-title-para #{note.noteTitle}
-                    p.note-description-para #{note.noteDescription}
+                    div.content
+                        p.note-title-para #{note.noteTitle}
+                        p.note-description-para #{note.noteDescription}
+                    a.delete(href=`/${note.id}/delete`) Delete
         else
             p.note-description-para There is no note yet!

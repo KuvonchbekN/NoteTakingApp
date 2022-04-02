@@ -19,6 +19,26 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/:id/delete", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  fs.readFile("./data/notes.json", (err, data) => {
+    if (err) throw err;
+
+    const notes = JSON.parse(data);
+    // res.render("home", { success: true, notes: notes });
+
+    const filteredNotes = notes.filter((note) => note.id != id);
+
+    fs.writeFile("./data/notes.json", JSON.stringify(filteredNotes), (err)=>{
+      if(err) throw err;
+
+      res.render("home", {notes : filteredNotes, deleted : true})
+    })
+  });
+});
+
 app.post("/create", (req, res) => {
   const formData = req.body;
 
