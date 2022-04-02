@@ -5,7 +5,8 @@ Some text
 #### Instructions
 1.Download the source code
 ```bash
-git clone [git repo]
+git clone https://github.com/KuvonchbekN/NoteTakingApp.git
+
 ```
 or just download the zip file
 
@@ -25,4 +26,4 @@ node app
 
 
 #### Link to the github repo
-[link of github repo]
+https://github.com/KuvonchbekN/NoteTakingApp.git
