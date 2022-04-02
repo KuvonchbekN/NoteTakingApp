@@ -1,17 +1,23 @@
 extends layout.pug
 
 block number1
-    form(action="/add" method="POST")
+    if error
+        p.error Please fill both inputs!
+
+    if success
+        p.success Note has been created successfully!
+
+    form(action="/create" method="POST")
         div.container
-            input.input-note(type="text" placeholder="Add Note title")
+            input.input-note(type="text" placeholder="Add Note title" name="noteTitle")
             button.btn Create
-    input.input-description(type="text" placeholder="Add Note description") 
+        input.input-description(type="text" placeholder="Add Note description" name="noteDescription")
 
     div.notes
-        div.card
-            p.note-title-para Some stuff1
-            p.note-description-para Some description 
-
-        div.card
-            p.note-title-para Some stuff2
-            p.note-description-para Some description2
+        if (notes.length)  
+            each note in notes
+                div.card
+                    p.note-title-para #{note.noteTitle}
+                    p.note-description-para #{note.noteDescription}
+        else
+            p.note-description-para There is no note yet!

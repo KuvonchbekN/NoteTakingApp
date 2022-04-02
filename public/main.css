@@ -1,3 +1,7 @@
+:root{
+    font-family: 'New Tegomin', serif;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -63,9 +67,10 @@
 .card{
     padding: 10px;
     font-size: 1.5rem;
-    border: 1px dotted #eee;
+    border: 1px dotted #ccc;
     margin: 10px;
-
+    width: 200px;
+    height: 200px;
 }
 
 .note-description-para{
@@ -75,6 +80,31 @@
 .card:hover{
     background-color: #eee;
 }
+
+
+.error{
+    text-align: center;
+    color: black;
+    font-size: 1.4rem;
+    border: 1px solid red;
+    padding: 5px 10px;
+    width: 80%;
+    margin-bottom: 3%;
+    background-color: tomato;
+}
+
+.success{
+    text-align: center;
+    color: green;
+    font-size: 1.4rem;
+    border: 1px solid green;
+    background-color: lightgreen;
+    padding: 5px 10px;
+    width: 80%;
+    margin-bottom: 3%;
+}
+
+
 
 
 
