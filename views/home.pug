@@ -5,24 +5,33 @@ block number1
         p.error Please fill both inputs!
 
     if success
-        p.success Note has been created successfully!
+        p.success Task has been created successfully!
 
     if deleted 
-        p.success Deleted successfully!
+        p.deleted Deleted successfully!
 
     form(action="/create" method="POST")
         div.container
-            input.input-note(type="text" placeholder="Add Note title" name="noteTitle")
+            input.input-task(type="text" placeholder="Add Task title" name="taskTitle")
             button.btn Create
-        input.input-description(type="text" placeholder="Add Note description" name="noteDescription")
+        input.input-description(type="text" placeholder="Add Task description" name="taskDescription")
 
-    div.notes
-        if (notes.length)  
-            each note in notes
-                div.card
-                    div.content
-                        p.note-title-para #{note.noteTitle}
-                        p.note-description-para #{note.noteDescription}
-                    a.delete(href=`/${note.id}/delete`) Delete
+    div.tasks
+        if (tasks.length)  
+            each task in tasks
+                if task.isActive
+                    div.card
+                        div.content
+                            p.task-title-para #{task.taskTitle}
+                            p.task-description-para #{task.taskDescription}
+                        a.delete(href=`/${task.id}/delete`) ❌Delete
+                        a.completeBtn(href=`/${task.id}/complete`) ✅Complete 
+                else
+                    div.card.completed
+                        div.content
+                            p.task-title-para #{task.taskTitle}
+                            p.task-description-para #{task.taskDescription}
+                        a.delete(href=`/${task.id}/delete`) ❌Delete
+                        a.completeBtn(href=`/${task.id}/incomplete`) Incomplete
         else
-            p.note-description-para There is no note yet!
+            p.task-description-para There is no task yet!

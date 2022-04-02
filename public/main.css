@@ -26,14 +26,15 @@
     margin: auto;
 }
 
-.input-note{
+.input-task{
     display: inline-block;
-    padding: 10px;
+    padding: 6px 10px;
     font-size: 1.5rem;
     width: 60%;
     border: 1px solid #ccc;
     margin-right: 2%;
     font-family: inherit;
+    font-weight: bold;
 }
 
 .input-description{
@@ -48,7 +49,7 @@
 
 .btn{
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px;
     font-size: 1.5rem;
     width: 18%;
     border: none;  
@@ -56,8 +57,13 @@
     color: white;
 }
 
+.btn:hover{
+    background-color: #0a536b;
+    cursor: pointer;
+}
 
-.notes{
+
+.tasks{
     margin-top: 25px;
     border: 1px solid #ccc;
     padding: 20px 10px;
@@ -79,7 +85,12 @@
     align-items: center;
 }
 
-.note-description-para{
+.content{
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.task-description-para{
     font-size: 1rem;
 }
 
@@ -114,8 +125,34 @@
 
 .delete{
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 5px 10px;
-    background-color: tomato;
+    background-color: rgb(67, 136, 116);
+    color: white;
+}
+
+
+.deleted{
+    text-align: center;
+    color: rgb(67, 136, 116);
+    font-size: 1.4rem;
+    border: 1px solid rgb(67, 136, 116);
+    background-color: rgb(67, 136, 116);
+    color: white;
+    padding: 5px 10px;
+    width: 80%;
+    margin-bottom: 3%;
+}
+
+
+.completed{
+    opacity: 0.5;
+}
+
+.completeBtn{
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 5px 10px;
+    background-color: rgb(24, 138, 106);
     color: white;
 }

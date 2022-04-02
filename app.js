@@ -11,11 +11,11 @@ app.use("/static", express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  fs.readFile("./data/notes.json", (err, data) => {
+  fs.readFile("./data/tasks.json", (err, data) => {
     if (err) throw err;
 
-    const notes = JSON.parse(data);
-    res.render("home", { notes: notes });
+    const tasks = JSON.parse(data);
+    res.render("home", { tasks: tasks });
   });
 });
 
@@ -23,56 +23,102 @@ app.get("/:id/delete", (req, res) => {
   const id = req.params.id;
   console.log(id);
 
-  fs.readFile("./data/notes.json", (err, data) => {
+  fs.readFile("./data/tasks.json", (err, data) => {
     if (err) throw err;
 
-    const notes = JSON.parse(data);
-    // res.render("home", { success: true, notes: notes });
+    const tasks = JSON.parse(data);
 
-    const filteredNotes = notes.filter((note) => note.id != id);
+    const filteredtasks = tasks.filter((task) => task.id != id);
 
-    fs.writeFile("./data/notes.json", JSON.stringify(filteredNotes), (err)=>{
+    fs.writeFile("./data/tasks.json", JSON.stringify(filteredtasks), (err)=>{
       if(err) throw err;
 
-      res.render("home", {notes : filteredNotes, deleted : true})
+      res.render("home", {tasks : filteredtasks, deleted : true})
     })
   });
 });
+
+
+app.get("/:id/complete", (req, res)=>{
+  const id = req.params.id;
+
+  fs.readFile("./data/tasks.json", (err, data)=>{
+    if(err) throw err;
+
+    const tasks = JSON.parse(data);
+    const task =  tasks.filter(task => task.id==id)[0]
+    const taskIdx = tasks.indexOf(task);
+
+    const splicedTask = tasks.splice(taskIdx, 1)[0];
+    splicedTask.isActive = false;
+
+    tasks.push(splicedTask);
+    fs.writeFile("./data/tasks.json", JSON.stringify(tasks), (err)=>{
+      if(err) throw err;
+
+      res.render("home", {tasks : tasks})
+    })
+  })
+})
+
+
+app.get("/:id/incomplete", (req, res)=>{
+  const id = req.params.id;
+
+  fs.readFile("./data/tasks.json", (err, data)=>{
+    if(err) throw err;
+
+    const tasks = JSON.parse(data);
+    const task =  tasks.filter(task => task.id==id)[0]
+    const taskIdx = tasks.indexOf(task);
+
+    const splicedTask = tasks.splice(taskIdx, 1)[0];
+    splicedTask.isActive = true;
+
+    tasks.push(splicedTask);
+    console.log(tasks);
+    fs.writeFile("./data/tasks.json", JSON.stringify(tasks), (err)=>{
+      if(err) throw err;
+
+      res.render("home", {tasks : tasks})
+    })
+  })
+})
 
 app.post("/create", (req, res) => {
   const formData = req.body;
 
   if (
     //if the user did not input anthing in one of the inputs
-    formData.noteTitle.trim() == "" ||
-    formData.noteDescription.trim() == ""
+    formData.taskTitle.trim() == "" ||
+    formData.taskDescription.trim() == ""
   ) {
-    fs.readFile("./data/notes.json", (err, data) => {
+    fs.readFile("./data/tasks.json", (err, data) => {
       if (err) throw err;
 
-      const notes = JSON.parse(data);
-      res.render("home", { error: true, notes: notes });
+      const tasks = JSON.parse(data);
+      res.render("home", { error: true, tasks: tasks });
     });
   } else {
-    //get all notes
-    fs.readFile("./data/notes.json", (err, data) => {
+    //get all tasks
+    fs.readFile("./data/tasks.json", (err, data) => {
       if (err) throw err;
 
-      const notes = JSON.parse(data);
+      const tasks = JSON.parse(data);
 
-      const note = {
+      const task = {
         id: id(),
-        noteTitle: formData.noteTitle,
-        noteDescription: formData.noteDescription,
+        taskTitle: formData.taskTitle,
+        taskDescription: formData.taskDescription,
         isActive: true,
       };
-      notes.push(note);
+      tasks.push(task);
 
-      fs.writeFile("./data/notes.json", JSON.stringify(notes), (err) => {
+      fs.writeFile("./data/tasks.json", JSON.stringify(tasks), (err) => {
         if (err) throw err;
       });
 
-      res.render("home", { success: true, notes: notes });
+      res.render("home", { success: true, tasks: tasks });
     });
   }
 });
