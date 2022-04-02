@@ -19,10 +19,10 @@ npm install
 node app
 ```
 
-#Dependencies list
--express
--pug
+# Dependencies list
+- express
+- pug
 
 
-####Link to the github repo
+#### Link to the github repo
 [link of github repo]
