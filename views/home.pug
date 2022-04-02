@@ -1,0 +1,17 @@
+extends layout.pug
+
+block number1
+    form(action="/add" method="POST")
+        div.container
+            input.input-note(type="text" placeholder="Add Note title")
+            button.btn Create
+    input.input-description(type="text" placeholder="Add Note description") 
+
+    div.notes
+        div.card
+            p.note-title-para Some stuff1
+            p.note-description-para Some description 
+
+        div.card
+            p.note-title-para Some stuff2
+            p.note-description-para Some description2
