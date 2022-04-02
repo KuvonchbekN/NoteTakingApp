@@ -33,6 +33,7 @@
     width: 60%;
     border: 1px solid #ccc;
     margin-right: 2%;
+    font-family: inherit;
 }
 
 .input-description{
@@ -42,6 +43,7 @@
     width: 80%;
     border: 1px solid #ccc;
     margin-top: 10px;
+    font-family: inherit;
 }
 
 .btn{
