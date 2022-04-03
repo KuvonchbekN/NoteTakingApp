@@ -1,5 +1,9 @@
 # TASK MANAGEMENT APPLICATION
-This particular task management app helps users to keep their tasks in one place.
+This particular task management app helps users to keep their tasks in one place,
+1. User can create his tasks
+2. Click complete button, if he completed this task 
+3. Click incomplete button, if it is not completed yet!
+4. Click delete, if user wants to remove this task card completely!
 
 #### Instructions
 1.Download the source code
