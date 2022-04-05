@@ -29,3 +29,6 @@ node app
 
 #### Link to the github repo
 https://github.com/KuvonchbekN/NoteTakingApp.git
+
+#### Link to glitch
+https://energetic-fast-climb.glitch.me/
